@@ -24,7 +24,7 @@ permitiendo realizar operaciones de CRUD (Crear, Leer, Actualizar, Eliminar) sob
     npm install mysql2
 ```
 
-Inicia el proyecto 
+3.Inicia el proyecto 
 ```bash
     npm run dev
 ```
@@ -54,13 +54,13 @@ Inicia el proyecto
     Código: 200 
     Contenido: Lista de libros
 
-"results": [
-        {
-            "id": 1,
-            "name": "La sombra del viento",
-            "genre": "Suspense",
-            "author": "Carlos Ruiz Zafon"
-        },
+ "results": [
+ {
+  "id": 1,
+  "name": "La sombra del viento",
+  "genre": "Suspense",
+  "author": "Carlos Ruiz Zafon"
+   },
 ];
 
 ## //Obtener un libro por titulo
