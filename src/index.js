@@ -35,12 +35,15 @@ api.post('/books', async(req, res) => {
         const {name, genre, author}= req.body;
         const sqlInsert = 'INSERT INTO library (name, genre, author) VALUES (?,?,?)';
         const [newBook] = await conn.query(sqlInsert, [name, genre, author]); 
-        res.satus(200).json({
+        console.log('Holiis');
+        res.status(200).json({
             succes: true,
             id: newBook.insertId,
+            
         });
-        await conex.connect();
+        await conn.end();
     }catch(error){
+        console.log(error);
         res.status(400).json(error);
     }
 
@@ -58,8 +61,8 @@ api.get('/books', async(req, res) => {
 
         res.status(200).json({
             results: result, // listado
-          });
-      
+        });
+        await conn.end();
     }catch (error){  
         res.status(400).json(error);
     }
@@ -80,7 +83,7 @@ api.get('/books/:name', async(req, res) => {
         }else{
             res.status(200).json({data:result[0]});
         }
-
+          await conn.end();
     }catch (error){
         res.status(400).json(error);
     }
@@ -104,7 +107,7 @@ api.put('/books/:id', async (req,res) => {
         }else{
             res.status(200).json({success: false, message:'Libro no encontrado'})
         }
-
+        await conn.end();
     }catch(error){
         res.status(400).json(error);
     }
@@ -125,7 +128,7 @@ api.delete('/books/:id', async (req,res) => {
         }else{
             res.status(200).json({success: false, message:'Libro no encontrado'})
         }
-
+        await conn.end();
     }catch(error){
         res.status(400).json(error);
     }
